@@ -1,0 +1,268 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/*******NAVIGATION*******/
+.navbar{
+    background-color: rgb(235, 15, 7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-radius: 0 0 15px 15px;
+    transition: top 0.3s;
+}
+nav.hidden {
+    top: -70px; /* Cache le naverbar */
+}
+.nav-link{
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+.nav-link:hover, .nav-link:active:hover{
+    color: white;
+    background-color: black;
+}
+.navbar-brand{
+    font-size: 1.25rem;
+    font-weight: 8000;
+    color:black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/*******ACCUEIL*******/
+.accueil{
+    background: url(./img/accueil.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+
+.accueil h3{
+    color: white;
+    font-size: 4.4rem;
+    font-weight: 700;
+}
+
+.accueil h6 {
+    color: white;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    line-height: 1;
+    border-bottom: 3px solid rgb(235, 15, 7);
+    width: fit-content;
+}
+
+/*Bouton A propos*/
+.accueil .btn1{
+    height: 55px;
+    width: 150px;
+    background-color: rgb(235, 15, 7);
+    color: white;
+    outline: none;
+    border:none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.accueil .btn1:hover{
+    background-color: rgb(175, 12, 12);
+    transition: 0.4s;
+}
+
+/*Bouton Contactez*/
+.accueil .btn2{
+    height: 55px;
+    width: 150px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(235, 15, 7);
+    outline: none;
+    border: 50px;
+    border-color: rgb(235, 15, 7);
+    font-weight: bold;
+    border-radius: 5px;
+}
+.accueil .btn2:hover{
+    background-color: rgb(175, 12, 12);
+    transition: 0.4s;
+    color: white;
+}
+
+/*******APROPOS*******/
+
+.apropos{
+    background-color: rgb(224, 224, 224);
+}
+
+#description{
+    text-align: justify;
+}
+
+h1{
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+
+/*Badges*/
+.custom-badge {
+    display: inline-block;
+    padding: 0.5em 1em;
+    font-size: 0.7em;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 0.35em;
+    margin: 0.25em;
+    transition: background-color 0.3s ease;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.custom-badge:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+.custom-badge.code {
+    background-color: rgb(235, 15, 7);
+    color: #fff;
+}
+.custom-badge.environment {
+    background-color: black;
+    color: white;
+}
+.custom-badge:hover.custom-badge.code{
+    background-color: rgb(175, 12, 12);
+    transition: 0.4s;
+}
+.custom-badge:hover.custom-badge.custom-badge.environment{
+    background-color: white;
+    color: black;
+    transition: 0.4s;
+}
+
+/*Image*/
+#me {
+    display: flex;
+    align-items: center;
+    scale: 125%;
+}
+#me img{
+    border-radius: 15%;
+    margin-left: 80px;
+}
+
+/*******PROJETS*******/
+
+/*Image du carousel*/
+.carousel-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.carousel-container img{
+
+    width: 700px;
+    height: 600px;
+}
+
+/*Text box*/
+#carouselText {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+#carouselText p{
+    text-align:justify;
+} 
+.text-box {
+    max-width: 1100px;
+    height: 200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+/*******RECOMPENSES*******/
+
+.card{
+    border: none;
+    height: 325px;
+    outline: none;
+    box-shadow: -8px 6px 89px -65px rgba(0,0,0,0.75);
+ }
+
+.card p{
+    color: grey;
+}
+
+/*Icons*/
+.circle{
+    height: 70px;
+    width: 70px;
+    background-color: lightgray;
+    color: black;
+    padding: 12px;
+    font-size: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.card:hover .circle{
+    background-color:  black;
+    color: white;
+    transition: 0.4s;
+}
+
+/*******CONTACTER*******/
+
+/*Icon*/
+.circle{
+    height: 70px;
+    width: 70px;
+    background-color: lightgray;
+    color: black;
+    padding: 12px;
+    font-size: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+.circle:hover{
+    background-color:  black;
+    color: white;
+    transition: 0.4s;
+}
+
+/*Bouton Soumettre*/
+.contactez .btn3{
+    height: 55px;
+    width: 138px;
+    background-color: rgb(235, 15, 7);
+    color: white;
+    outline: none;
+    border:none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.btn3:hover{
+    background-color: rgb(175, 12, 12);
+    transition: 0.4s;
+}
+
+/*******FOOTER*******/
+
+footer{
+    background-color: black;
+    color:rgb(168, 168, 168);
+}

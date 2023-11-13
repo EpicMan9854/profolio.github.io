@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./icon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./icon/favicon-16x16.png">
+  <link rel="manifest" href="./icon/site.webmanifest">
+  <link rel="mask-icon" href="./icon/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Porfolio</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://kit.fontawesome.com/60f6cd162a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+</head>
+
+<body>
+  <!--
+   2.	La navigation:
+      Incluez un menu de navigation qui permet aux visiteurs de naviguer facilement dans le portfolio.
+      Implémentez un défilement fluide vers les différentes sections du portefolio.
+  -->
+  <!--NAVBAR-->
+  <nav class="navbar navbar-expand-lg text-uppercase">
+    <div class="container-fluid">
+      <a class="navbar-brand font-weight-bold" href="#"><b>Porfolio</b></a>
+  
+      <!--Menu de navigation-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link px-lg-4 rounded" href="#acceuil">Accueil</a>
+          <a class="nav-link px-lg-4 rounded" href="#apropos">À propos</a>
+          <a class="nav-link px-lg-4 rounded" href="#projets">Projets</a>
+          <a class="nav-link px-lg-4 rounded" href="#realisations">Réalisations</a>
+          <a class="nav-link px-lg-4 rounded" href="#contactez">Contactez-moi</a>
+        </div>
+      </div>
+    </div>
+  
+    <!--Animation de la barre de navigation-->
+    <script>
+      const nav = document.querySelector('nav');
+      const navbarToggle = document.querySelector('.navbar-toggler');
+      const navbarCollapse = document.querySelector('.navbar-collapse');
+      let prevScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      let hoveringNearTop = false;
+      let isNavbarOpen = false;
+  
+      window.addEventListener('scroll', function () {
+        const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+        if (currentScrollPos < 30) {
+          hoveringNearTop = true;
+        } else {
+          hoveringNearTop = false;
+        }
+  
+        if (currentScrollPos > prevScrollPos && !hoveringNearTop && !isNavbarOpen) {
+          // Cache le navbar quand on descend dans la page
+          nav.style.top = '-70px';
+        } else {
+          // Montre le navbar quand on monte dans la page
+          nav.style.top = '0';
+        }
+        prevScrollPos = currentScrollPos;
+      });
+  
+      // Ouvre le navbar quand le curseur approche le haut de la page
+      window.addEventListener('mousemove', function (e) {
+        if (e.clientY < 30 && !isNavbarOpen) {
+          hoveringNearTop = true;
+          nav.style.top = '0';
+        } else if (!hoveringNearTop && !isNavbarOpen) {
+          nav.style.top = '-70px';
+        }
+      });
+  
+      nav.addEventListener('mouseleave', function () {
+        if (!isNavbarOpen) {
+          navbarCollapse.classList.remove('show');
+        }
+      });
+  
+      navbarToggle.addEventListener('click', function () {
+        isNavbarOpen = !isNavbarOpen;
+      });
+  
+      // Ferme le navbar après avoir choisi un menu
+      document.querySelectorAll('.nav-link').forEach(function (navLink) {
+        navLink.addEventListener('click', function () {
+          const navbarToggle = document.querySelector('.navbar-toggler');
+          if (navbarToggle.offsetParent !== null) {
+            // Ferme le navbar s'il est ouvert
+            navbarToggle.click();
+          }
+        });
+      });
+    </script>
+  </nav>
+
+  <!--
+  3.	Accueil/Introduction :
+  Créez une section d'introduction convaincante avec une photo de profil et une brève biographie.
+  Utilisez des composants Bootstrap pour le style, tels que Jumbotron ou Card.
+  -->
+
+  <!--ACCUEIL-->
+  <section class="accueil py-5" id="acceuil">
+    <div class="container py-5">
+      <div class="row py-5">
+        <div class="col-lg-9 py-5 mr-auto">
+          <h3><small>Bienvenue au profolio de</small> <br>Joshua Nowlan.</h3>
+          <h6 class="pt-2">Informaticien</h6>
+          <input type="button" value="À propos" class="btn1 mt-4 mr-3" id="toAproposAcceuil">
+          <input type="button" value="Contactez-moi" class="btn2 mt-4" id="toContactAcceuil">
+
+          <!--Navigation des buttons-->
+          <script>
+            // To À propos
+            document.getElementById('toAproposAcceuil').addEventListener('click', function() {
+                const apropos = document.getElementById('apropos');
+        
+                if (apropos) {
+                  apropos.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+            // To Contactez
+            document.getElementById('toContactAcceuil').addEventListener('click', function() {
+                const contactez = document.getElementById('contactez');
+        
+                if (contactez) {
+                  contactez.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--APROPOS-->
+  <section class="apropos py-5 bg-light" id="apropos">
+    <div class="container">
+      <div class="row">
+        <!--Section de texte-->
+        <div class="col-lg-9" data-aos="fade-right" data-aos-duration="1250">
+          <div id="description">
+          <h1>À propos de moi</h1>
+          <p class="py-4">
+            Mon nom est Joshua Nowlan. Je suis un étudiant en informatique applique dans la dernière année de son diplôme de baccalauréat à l’Université de Moncton. 
+            Je crois que mes connaissances en gestion de projet, mon souci du détail et mon éthique de travail solide feraient de moi un atout pour n'importe quelle équipe. 
+            Pour contribuer également à l'équité en matière d'emploi, je m'identifie en tant qu'individu en situation de handicap.
+          </p>
+          <p>
+            Mon expérience professionnelle actuelle m'a permis de travailler de manière autonome ainsi qu'en équipe. 
+             J'ai travaillé dans plusieurs départements différents au sein de l'organisation, avec des responsabilités croissantes, ce qui m'a appris à m'adapter à de nouveaux environnements et à me familiariser rapidement avec de nouveaux flux de travail. 
+             Ces opportunités m'ont permis d'assumer des rôles de leadership tels que la formation de nouveaux employés et d'être désigné occasionnellement comme gérant temporaire du département. 
+             Je suis convaincu que cette expérience me permettra de m'intégrer facilement au sein de n'importe quelle organisation. 
+          </p>
+          </div>
+
+          <!--COMPETENCES-->
+          <h4>Compétences</h4>
+          <!--Languages de programmations-->
+          <p class="py-2">
+            <span class="custom-badge code">C++</span>          
+            <span class="custom-badge code">HTML / CSS</span>
+            <span class="custom-badge code">Python</span>
+            <span class="custom-badge code">SQL</span>
+            <span class="custom-badge code">JavaScript</span>
+          </p>
+          <!--Environnements de développement -->
+          <p>
+            <span class="custom-badge environment">Visual Studio / VS Code</span>
+            <span class="custom-badge environment">Sharepoint Online</span>
+            <span class="custom-badge environment">Power Automate</span>
+            <span class="custom-badge environment">Jupyter Notebook</span>        
+          </p>
+        </div>
+
+        <!--Section d'image-->
+        <div class="col-lg-3" id ="me">
+          <img src="./img/meface.JPG" class="img-fluid w-150" data-aos="fade-left" data-aos-duration="1250" alt="It's me">
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!--
+  4.	Section Projets :
+  Présentez quelques projets (1 à 3) que vous avez réalisés, soit en programmation, développement Web ou autre.
+  Incluez les titres du projet, les descriptions et les captures d'écran ou les images.
+  Implémentez une galerie d'images réactive à l'aide du composant Carousel de Bootstrap.
+-->
+
+  <!--PROJETS-->
+  <section class="projets py-4" id="projets">
+    <!--Titre de la section -->
+    <h1 class="text-center pb-4">Mes projets</h1>
+
+    <!--Carousel d'images des projets -->
+    <div class="carousel-container">
+      <!--ID unique pour le carousel -->
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!--Images du carousel -->
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <img src="./img/snek2.png" class="d-block w-100" alt="serpent">
+            </div>
+
+            <div class="carousel-item">
+              <img src="./img/pageweb.png" class="d-block w-100" alt="épée 3D">
+            </div>
+  
+            <div class="carousel-item">
+              <img src="./img/sharepoint.png" class="d-block w-100" alt="temp2">
+            </div>
+  
+            <div class="carousel-item">
+              <img src="./img/sword.png" class="d-block w-100" alt="épée 3D">
+            </div>
+          </div>
+        </div>
+
+        <!--Boutons de navigation du carousel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Suivant</span>
+        </button>
+      </div>
+    </div>
+
+    <!--Texte dessous le carousel -->
+    <div class="text-box" id="carouselText">
+      <!--Texte defaut pour le carousel 1 -->
+      <h5>Snake Game</h5>
+      <p>L’un des premiers projets que j'ai réalisés lorsque j'ai commencé mes études en informatique est la création du jeu du serpent. 
+        Ce jeu est créé en C++ et se joue dans la console. 
+        Je cherchais une manière d'appliquer les principes de base de manière simple et créative.
+      </p>
+    </div>
+  
+    <!--Changement du texte du carousel -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var carousel = new bootstrap.Carousel(document.getElementById('carouselExampleAutoplaying'), {
+          interval: 10000, // Interval de changement du carousel
+        });
+
+      // Titre et texte pour chaque projet
+      var textContent = [
+        { title: 'Snake Game', content: 'L’un des premiers projets que j\'ai réalisés lorsque j\'ai commencé mes études en informatique est la création du jeu du serpent. Ce jeu est créé en C++ et se joue dans la console. Je cherchais une manière d\'appliquer les principes de base de manière simple et créative.' },
+        { title: 'Page web', content: 'Ce profil en tant que tel est un projet que j\'ai créé. L\'objectif était de créer un site Web de portfolio personnel avec HTML et CSS en utilisant le framework CSS Bootstrap. Il consiste à présenter tes compétences, tes projets et tes réalisations en tant que programmeur, informaticien, développeur Web, etc.' },
+        { title: 'Demande d’entretien', content: 'Pendant un stage d’été, on m\'a confié la tâche d\'ajouter un système de demande d\'entretien informatique pour un site sur Sharepoint Online. Un client devrait être capable d\'ajouter à une liste de demande et l\'envoyer pour être approuvé par divers gestionnaires. La demande est également ajoutée dans un calendrier où l\'état d\'approbation est également mis à jour. Ces fonctions étaient exécutées par des flows de Power Automate.' },
+        { title: 'Conception 3D', content: 'Un passe-temps qui me passionne est la conception 3D. C\'est un peu en dehors du domaine de l\'informatique. Toutefois, cela m\'apprend à penser en dehors des sentiers battus pour trouver des solutions simples pour une tâche et à ajouter des aspects mineurs qui améliorent un produit final.'},
+      ];
+
+      var textContainer = document.getElementById('carouselText');
+      var titleElement = textContainer.querySelector('h5');
+      var contentElement = textContainer.querySelector('p');
+
+      // Mettre à jour le texte et gérer l'animation
+      function updateText(nextIndex) {
+        // Masquer le conteneur de texte avec un effet de fondu
+        textContainer.style.opacity = '0';
+
+        // Délai pour mettre à jour le texte après l'animation
+        setTimeout(function () {
+          titleElement.textContent = textContent[nextIndex].title;
+          contentElement.textContent = textContent[nextIndex].content;
+
+          // Affiche le conteneur de texte
+          textContainer.style.opacity = '1';
+        }, 500); // Ajuste le temps de délai pour correspondre à la durée de transition de fondu
+      }
+
+      // Mettre à jour le texte au démarrage du changement de diapositive du carousel
+      carousel._element.addEventListener('slide.bs.carousel', function (event) {
+        var nextIndex = event.to;
+        updateText(nextIndex);
+      });
+    });
+    </script>
+  </section>
+
+
+  <!--
+    6.	Réalisations et récompenses:
+    Mettez en évidence toutes les récompenses, certifications ou réalisations pertinentes liées à la programmation, la conception et au développement de sites Web ou tout simplement en informatique.
+    Utilisez les composants Alert ou Card de Bootstrap pour présenter ces informations.
+  -->
+  <section class="realisations py-4 bg-light" id="realisations">
+    <div class="container py-4">
+      <h1 class="text-center pb-5" data-aos="fade-up" data-aos-duration="1000">Réalisations et récompenses</h1>
+      <div class="row pb-3">
+
+      <div class="row">
+        <div class="col-lg-4 mb-3">
+          <div class="card text-center py-3" data-aos="fade-up" data-aos-duration="1250">
+            <div class="card-body">
+              <div class="circle">
+                <span><i class="fa-solid fa-medal"></i></span>
+              </div>
+              <h4 class="font-weight-bold pb-2">All-Star</h4>
+              <p>Attribuer le prix du "Meilleur capitaine" lors du championnat provincial junior de curling du Nouveau-Brunswick (2019)</p>           
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-3">
+          <div class="card text-center py-3" data-aos="fade-up" data-aos-duration="1250">
+            <div class="card-body">
+              <div class="circle">
+                <span><i class="fa-solid fa-people-group"></i></span>
+              </div>
+              <h4 class="font-weight-bold pb-2">Champion</h4>
+              <p>Représentant à deux reprises du Nouveau-Brunswick au championnat national de curling (2019 et 2021)</p>           
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 mb-3">
+          <div class="card text-center py-3" data-aos="fade-up" data-aos-duration="1250">
+            <div class="card-body">
+              <div class="circle">
+                <span><i class="fa-regular fa-clipboard"></i></span>
+              </div>
+                <h4 class="font-weight-bold pb-2">Entraîneur</h4>
+            <p>Je suis un entraîneur formé pour le sport du curling (2023)</p>           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--
+    7.	Coordonnées:
+    Fournissez des informations de contact, y compris une adresse électronique et des liens vers vos profils de réseaux sociaux (LinkedIn, GitHub, etc.).
+    Utilisez les composants de formulaire de Bootstrap pour le formulaire de contact.
+  -->
+
+  <section class="contactez py-3" id="contactez">
+    <div class="container py-4">
+      <h1 class="text-center" data-aos="fade-up" data-aos-duration="1250">Contactez-moi</h1>
+      <div class="row py-5">
+        <div class="col-lg-10 mx-auto">
+  
+          <!--MON INFO -->
+          <div class="row text-center">
+            <!--Adresse -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1350">
+              <div class="circle">
+                <span><i class="fa-solid fa-house"></i></span>
+              </div>
+              <h5>Adresse</h5>
+              <!--X-Mansion -->
+              <p>1407 Graymalkin Lane, Salem Center, New York</p>
+            </div>
+  
+            <!--Téléphone -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1350">
+              <div class="circle">
+                <span><i class="fas fa-phone-alt"></i></span>
+              </div>
+              <h5>Téléphone</h5>
+              <!--Ghostbusters -->
+              <p>1-800-555-2368</p>
+            </div>
+  
+            <!--Courriel -->
+            <div class="col-lg-4" data-aos="fade-up" data-aos-duration="1350">
+              <div class="circle">
+                <span><i class="fa-solid fa-envelope"></i></span>
+              </div>
+              <h5>Courriel</h5>
+              <!-- Rick and Morty + Retour vers le futur -->
+              <p>mortysmith.c137@deloreandmc12.com</p>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <!-- LEUR INFO -->
+      <div class="row">
+        <div class="col-lg-9 mx-auto">
+          <!-- Formulaire de contact -->
+          <form action="">
+            <div class="row">
+              <!--Champ Prénom -->
+              <div class="col-lg-6">
+                <input type="text" class="form-control bg-light mb-3" placeholder="Prénom" data-aos="fade-up" data-aos-duration="1350">
+              </div>
+
+              <!--Champ Nom -->
+              <div class="col-lg-6">
+                <input type="text" class="form-control bg-light mb-3" placeholder="Nom" data-aos="fade-up" data-aos-duration="1350">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6">
+                <!--Champ Téléphone -->
+                <input type="tel" class="form-control bg-light mb-3" placeholder="Téléphone" data-aos="fade-up" data-aos-duration="1350">
+              </div>
+
+              <!--Champ Courriel -->
+              <div class="col-lg-6">
+                <input type="email" class="form-control bg-light mb-3" placeholder="Courriel" data-aos="fade-up" data-aos-duration="1350">
+              </div>
+            </div>
+            
+            <!--Zone de texte pour le message -->
+            <div class="row">
+              <div class="col-lg-12">
+                <textarea name="" id="" class="form-control bg-light" placeholder="Message" cols="30" rows="10" data-aos="fade-up" data-aos-duration="1350"></textarea>
+              </div>
+            </div>
+
+            <!--Bouton Soumettre -->
+            <div class="row">
+              <div class="col-lg-12">
+                <button class="btn3 my-4">Soumettre</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="py-3 text-center">
+    <p>It's dangerous to go alone! Take this. <img src="./img/842184.png" alt="LoZ" height="18"></p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init()</script>
+  </body>
+</html>
