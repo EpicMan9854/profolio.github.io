@@ -161,6 +161,21 @@ h1{
     margin-left: 80px;
 }
 
+/*Pour views qui son plus vertical*/
+@media (max-width: 1000px) {
+    #me {
+        margin: 0 auto 20px;
+        max-width: 300px;
+    }
+
+    #me img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin: 0;
+    }
+}
+
 /*******PROJETS*******/
 
 /*Image du carousel*/
