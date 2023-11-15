@@ -199,7 +199,7 @@ h1{
 } 
 .text-box {
     max-width: 1100px;
-    height: 250px;
+    height: 200px;
     margin: 20px auto;
     padding: 20px;
     background-color: #f8f9fa;
@@ -207,6 +207,19 @@ h1{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
   }
+
+  @media (max-width: 1000px) {
+    .text-box {
+        max-width: 1100px;
+        height: 300px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+}
 
 /*******RECOMPENSES*******/
 
